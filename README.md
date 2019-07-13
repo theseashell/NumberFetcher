@@ -1,9 +1,9 @@
-NumberFetcher
+#NumberFetcher
 
 NumberFetcher is a software that uses tesseract to read numbers from screenshots and then displays those numbers
 as a trendline.
 
-How to use the number fetcher:
+##How to use the number fetcher:
 
 First of all you have to define a region of interest. Therefor you define a rectangle which you want to read
 the numbers from by klicking in the upper left and lower right corner of your rectangle. Your choice will be 
@@ -18,11 +18,11 @@ When you klick on "Start" the software will start to display your chosen number 
 work please have a look in the command line and the python file. Maybe you can figure it out.
 
 
-What environment is this tested in?
+##What environment is this tested in?
 Windows10
 
 
-How to install:
+##How to install:
 download tesseract and add the path to your environment
 install pytesseract, the python wrapper for pytesseract
 adjust the paths in the .py file to match wherever you installed the NumberFetcher on your machine
@@ -40,7 +40,7 @@ pytesseract
 numpy
 
 
-To do:
+##To do:
 - check if the difference mode still works
 - make the GUI independant of readout intervall -> smoother experience
 
