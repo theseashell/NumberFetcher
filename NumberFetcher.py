@@ -88,6 +88,9 @@ class NumberTracing(tk.Frame):
         self.idle = tk.DoubleVar()
         self.idle.set(1.0)
         self.i = 0
+        self.memory = numpy.nan
+        self.latestDiff = 0.
+        self.shortMem = []
 
         #Frames
         self.left = tk.Frame(self.parent, borderwidth=1, relief="solid")
@@ -265,7 +268,6 @@ class NumberTracing(tk.Frame):
         T = float(self.idleE.get())
         print(T)
         splitting = True
-        latestDiff = 0.
         delimiter = self.delimiterE.get()
         if delimiter == "":
             splitting = False
@@ -321,26 +323,33 @@ class NumberTracing(tk.Frame):
         self.times.append(int(self.i)*T)
 
         if mode == "Difference":
+            print("Mode is Difference!")
             try:
-                if self.i < 1:                          #for the first number there is no earlier number, so set to NaN
+                if self.i < 2:               #for the first number there is no earlier number, so set to NaN
+                    self.shortMem.append(number)
                     self.values.append(numpy.nan)
+                    self.memory = numpy.nan
+                    if self.i == 1:
+                        self.latestDiff = self.shortMem[1] - self.shortMem[0]
                 else:
-                    if number == 0:                 #adjust for display and screenshot not synched (python too slow)
-                        self.values.append(latestDiff)
-                    elif number-memory == 0:        #adjust for display and screenshot not synched (python too fast)
-                        self.values.append(latestDiff)
+                    if number-self.memory < 0.0001:        #adjust for display and screenshot not synched (python too fast)
+                        self.values.append(self.latestDiff)
                     else:
-                        latestDiff = number-memory  #if everything is fine just add the difference between current and last
-                        self.values.append(latestDiff)
-            except:                                 #add NaN if anything goes wrong
+                        self.latestDiff = number-self.memory  #if everything is fine just add the difference between current and last
+                        self.values.append(self.latestDiff)
+            except Exception as e:                                 #add NaN if anything goes wrong
                 self.values.append(numpy.nan)
+                print(e)
 
             try:
-                memory = number
+                self.memory = number
             except:
-                memory = numpy.nan
+                self.memory = numpy.nan
+
+            print("Memory = {}".format(self.memory))
 
         if mode == "Total":
+            print("Mode is Total!")
             try:
                 if self.i < 1:                          #for the first number there is no earlier number, so set to NaN
                     self.values.append(numpy.nan)
