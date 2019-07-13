@@ -15,7 +15,9 @@ to a float so you need to explicitly give the delimiter which is ":" in this cas
 Then you need the time difference between readouts. Because tesseract needs at least around .7 seconds to
 get the numbers from the image, it is useful to just chose 1.0 seconds to be on the safe side.
 When you klick on "Start" the software will start to display your chosen number in a trendline. If it does not
-work please have a look in the command line and the python file. Maybe you can figure it out.
+work please have a look in the command line and the python file. Maybe you can figure it out.\
+If you want to see the change in a variable, mark the "Difference?" checkbox. Always press stop and then clear if you want
+to change something.
 
 
 ## What environment is this tested in?
