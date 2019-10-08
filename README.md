@@ -6,7 +6,7 @@ as a trendline.
 ## How to use the number fetcher:
 
 First of all you have to define a region of interest. Therefor you define a rectangle which you want to read
-the numbers from by klicking in the upper left and lower right corner of your rectangle. Your choice will be 
+the numbers from by klicking in the upper left and lower right corner of your rectangle. Your choice will be
 displayed in the lower right. If you are happy klick on save ROI so that you don't have to reenter the ROI
 corners whenever you restart the program.\
 When this is done you can insert a delimiter for your number. If it has "xxx.xx" a format like this then you
@@ -45,6 +45,4 @@ numpy
 ## To do:
 - make the GUI independant of readout intervall -> smoother experience
 - it could never end ...
-
-
-
+- test Git Implementation
